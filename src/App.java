@@ -5,35 +5,65 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner leer = new Scanner(System.in);
         InsertionSort insercion = new InsertionSort();
-
+        ShellSort shell = new ShellSort();
         
-        System.out.println("------Menu------\n 1.Ejecutar Ordenamientos\n 2.Salir");
+        int[] array = {12, -7, 25, 0, -15, 33, 19, -22, 5, 48, -3};
+        
+        System.out.println("----------Menu----------\n 1.Ejecutar Ordenamientos\n 2.Salir");
         int opcionMenu = leer.nextInt();
-        int[] valoresObtenidos;
+        int[] valoresObtenidosInsertion;
+         int[] valoresObtenidosShell;
         while (opcionMenu != 2) {
-            int[] array = { 0, 1, 4, 5, 2, 5, 6, 7, 8, 1, 23, 14 };
+            
+            
             if (opcionMenu == 1) {
-                System.out.println("Metodo de Insercion");
+
+                // Metodo Insertion
+                System.out.println("Metodo de Insertion");
                 System.out.println("Usted quiere ordenar ascendente? (S/N)");
-                String ordenamiento = leer.next();
-                while (!ordenamiento.equalsIgnoreCase("S") && !ordenamiento.equalsIgnoreCase("N")) {
+                String ordenamientoInsertion = leer.next();
+                while (!ordenamientoInsertion.equalsIgnoreCase("S") && !ordenamientoInsertion.equalsIgnoreCase("N")) {
                     System.out.println("Usted ingreso un valor no detectado, vuelva a ingresar");
                     System.out.println("Usted quiere ordenar ascendente? (S/N)");
-                    ordenamiento = leer.next();
+                    ordenamientoInsertion = leer.next();
                     
                 }
-                if (ordenamiento.equalsIgnoreCase("S")) {
-                    valoresObtenidos = insercion.sort(array, true);
+                if (ordenamientoInsertion.equalsIgnoreCase("S")) {
+                    valoresObtenidosInsertion = insercion.sort(array, true);
                 } else {
-                    valoresObtenidos = insercion.sort(array, false);
+                    valoresObtenidosInsertion = insercion.sort(array, false);
                 }
-                System.out.println("Comparaciones obtenidas; " + valoresObtenidos[0]+"\n"+ "Cambios Obtenidos:" + valoresObtenidos[1]+"\n"+"Iteraciones Obtenidas: "+ valoresObtenidos[2]);
+                System.out.println("Comparaciones obtenidas; " + valoresObtenidosInsertion[0]+"\n"+ "Cambios Obtenidos:" + valoresObtenidosInsertion[1]+"\n"+"Iteraciones Obtenidas: "+ valoresObtenidosInsertion[2] + "\n");
+                
+                // Metodo Shell
+
+                System.out.println("Metodo de Shell ");
+                System.out.println("Usted quiere ordenar ascendente? (S/N)");
+                String ordenamientoShell = leer.next();
+                while (!ordenamientoShell.equalsIgnoreCase("S") && !ordenamientoShell.equalsIgnoreCase("N")) {
+                    System.out.println("Usted ingreso un valor no detectado, vuelva a ingresar");
+                    System.out.println("Usted quiere ordenar ascendente? (S/N)");
+                    ordenamientoShell = leer.next();
+                    
+                }
+                if (ordenamientoShell.equalsIgnoreCase("S")) {
+                    valoresObtenidosShell = shell.sort(array, true);
+                } else {
+                    valoresObtenidosShell = shell.sort(array, false);
+                }
+                System.out.println("Comparaciones obtenidas; " + valoresObtenidosShell[0]+"\n"+ "Cambios Obtenidos:" + valoresObtenidosShell[1]+"\n"+"Iteraciones Obtenidas: "+ valoresObtenidosShell[2] + "\n");
 
             } else {
                 System.out.println("Usted ingreso la entrada mal ");
             }
+
+            // Leer de nuevo
             System.out.println("------Menu------\n 1.Ejecutar Ordenamientos\n 2.Salir");
             opcionMenu = leer.nextInt();
+
+
+
+
         }
         System.out.println("Usted salio del programa");
 
