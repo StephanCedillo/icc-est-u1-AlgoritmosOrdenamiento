@@ -30,7 +30,7 @@ public class ShellSort {
                         System.out.print(amarillo + printArray(array) + reset + "  ");
                         array[j] = array[j - gap];
                         comparaciones++;
-                        System.out.println("gap: " + gap + "   " + "a: " + j + "  " + "b : " + (j - 1)
+                        System.out.println("gap: " + gap + "   " + "a: " + j + "  " + "b : " + (j - gap)
                                 + "  " + "a: [" + array[j] + "]  " + "b: [" + aux + "]" + "  " + "cambio: "
                                 + " si ");
                         cambios++;
@@ -41,7 +41,7 @@ public class ShellSort {
                         System.out.print(amarillo + printArray(array) + reset + "  ");
                         array[j] = array[j - gap];
                         comparaciones++;
-                        System.out.println("gap: " + gap + "   " + "a: " + j + "  " + "b : " + (j - 1)
+                        System.out.println("gap: " + gap + "   " + "a: " + j + "  " + "b : " + (j - gap)
                                 + "  " + "a: [" + array[j] + "]  " + "b: [" + aux + "]" + "  " + "cambio: "
                                 + " si ");
                         cambios++;
@@ -50,10 +50,10 @@ public class ShellSort {
                 }
 
                 array[j] = aux;
-                if (j != 0) {
-                    System.out.println(amarillo + printArray(array) + reset + "  " + "gap: " + gap + "   " + "a: " + j
-                            + "  " + "b : " + (j - 1)
-                            + "  " + "a: [" + array[j] + "]  " + "b: [" + array[j - 1] + "]" + "  " + "cambio: "
+                if (j - gap >= 0) {
+                    System.out.println(amarillo + printArray(array) + reset + "  " + "gap: " + (j-gap )+ "   " + "a: " + j
+                            + "  " + "b : " + (j)
+                            + "  " + "a: [" + array[j] + "]  " + "b: [" + array[j-gap] + "]" + "  " + "cambio: "
                             + " no ");
                     comparaciones++;
 
