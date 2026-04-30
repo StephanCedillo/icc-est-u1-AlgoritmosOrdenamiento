@@ -5,7 +5,7 @@ public class InsertionSort {
 
     /*
      * Colorcitos
-     * Negro  \u001B[30m
+     * Negro \u001B[30m
      * Rojo \u001B[31m
      * Verde \u001B[32m
      * Amarillo \u001B[33m
@@ -16,80 +16,80 @@ public class InsertionSort {
      * Reset \u001B[0m
      */
     int aux;
-    String rojo= "\u001B[31m";
-    String verde= "\u001B[32m";
-    String amarillo= "\\u001B[33m";
+    String rojo = "\u001B[31m";
+    String amarillo = "\u001B[33m";
+    String reset = "\u001B[0m";
 
     public int[] sort(int[] arreglo, boolean asc) {
         int[] array = arreglo.clone();
-        int[] valoresObtenidos = {
-                0// Comparaciones
-                , 0// Cambios
-                , 0// Iteraciones
-        };
-        int comparaciones = 0;
-    int cambios = 0;
-    int iteraciones = 0;
-        boolean cambio = false;
 
-        System.out.println("Arreglo Original");
-        printArray(array);
+        int comparaciones = 0;
+        int cambios = 0;
+
+        System.out.println(rojo + "Arreglo Original : " + reset);
+        System.out.println(amarillo + printArray(array) + reset);
+
         for (int i = 0; i < array.length; i++) {
-            iteraciones++;
             aux = array[i];
             int j = i;
-            System.out.print("\n Iteracion: " + (i + 1) + "\n");
+            System.out.print(i != 0 ? rojo + "\n I" + (i) + " : " + reset : "");
 
             if (asc) {
                 // ascendente
+
                 while (j > 0 && array[j - 1] > aux) {
+
+                    System.out.print(amarillo + printArray(array) + reset + "  ");
+
                     comparaciones++;
                     array[j] = array[j - 1];
+                    System.out.println("a: " + j + "  " + "b : " + (j - 1)
+                            + "  " + "a: [" + array[j] + "]  " + "b: [" + aux + "]" + "  " + "cambio: "
+                            + " si ");
                     j--;
-                    valoresObtenidos[1]++;
-                    System.out.println(" \n Cambio dentro de la iteracion " + (i + 1) + " : ");
-                    printArray(array);
-                    valoresObtenidos[0]++;
-                    cambio = true;
-                      cambios++;
+                    cambios++;
 
                 }
-                System.out.print(cambio ? "" : "No hubo cambios" + "\n");
-                cambio = false;
-                valoresObtenidos[0]++;
 
             } else {
                 // descendente
-                while (j > 0 && array[j - 1] < aux) {
+                while (j > 0 && array[j - 1] > aux) {
+
+                    System.out.print(amarillo + printArray(array) + reset + "  ");
+
                     comparaciones++;
                     array[j] = array[j - 1];
+                    System.out.println("a: " + j + "  " + "b : " + (j - 1)
+                            + "  " + "a: [" + array[j] + "]  " + "b: [" + aux + "]" + "  " + "cambio: "
+                            + " si ");
                     j--;
-                    valoresObtenidos[1]++;
-                    System.out.println(" \n Cambio dentro de la iteracion " + (i + 1) + " : ");
-                    printArray(array);
-                    valoresObtenidos[0]++;
-                    cambio = true;
                     cambios++;
                 }
-                valoresObtenidos[0]++;
-                System.out.print(cambio ? "" : "No hubo cambios" + "\n");
-                cambio = false;
 
             }
 
             array[j] = aux;
-            valoresObtenidos[2]++;
+            if (j != 0) {
+                System.out.println(amarillo + printArray(array) + reset + "  " + "a: " + j + "  " + "b : " + (j - 1)
+                        + "  " + "a: [" + array[j] + "]  " + "b: [" + array[j - 1] + "]" + "  " + "cambio: "
+                        + " no ");
+                comparaciones++;
+
+            }
+
         }
-        System.out.println("Arreglo Ordenado" + "\n");
-        printArray(array);
-        return new int[]{comparaciones, cambios, iteraciones};
+        System.out.println("\n" + rojo + "Arreglo Ordenado" + reset);
+        System.out.println(amarillo + printArray(array) + reset + "\n");
+        return new int[] { comparaciones, cambios, array.length - 1 };
     }
 
-    public void printArray(int[] array) {
-        System.out.print(" Arreglo : [");
+    public String printArray(int[] array) {
+        String mensaje = "";
+        mensaje += "[";
         for (int i : array) {
-            System.out.print(i + " , ");
+            mensaje += i + " , ";
         }
-        System.out.println("]");
+        mensaje += "]";
+        return mensaje;
     }
 }
