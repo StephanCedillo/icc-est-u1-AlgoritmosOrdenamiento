@@ -10,7 +10,7 @@ public class App {
         InsertionSort insercion = new InsertionSort();
         ShellSort shell = new ShellSort();
 
-        int[] array = { 2, 0, -15, 10, 20, -3, -5, 7 };
+        int[] array = { 12,-7,25,0,-15,33,19,-22,5,48,-3 };
 
         System.out.println("----------Menu----------\n 1.Ejecutar Ordenamientos\n 2.Salir");
         int opcionMenu = leer.nextInt();
