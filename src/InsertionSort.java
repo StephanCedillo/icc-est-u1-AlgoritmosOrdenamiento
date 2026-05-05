@@ -36,16 +36,21 @@ public class InsertionSort {
 
             if (asc) {
                 // ascendente
-
                 while (j > 0 && array[j - 1] > aux) {
-
-                    System.out.print(amarillo + printArray(array) + reset + "  ");
-
+                    
+                    
+                    
                     comparaciones++;
                     array[j] = array[j - 1];
+                    if (j==i) {
+                        System.out.print(amarillo + printArray(array) + reset + "  ");  
+                    }else{
+                        printSpecificElements(array,array[j],aux,j);
+                    }
                     System.out.println("a: " + j + "  " + "b : " + (j - 1)
                             + "  " + "a: [" + array[j] + "]  " + "b: [" + aux + "]" + "  " + "cambio: "
                             + " si ");
+                    
                     j--;
                     cambios++;
 
@@ -55,14 +60,19 @@ public class InsertionSort {
                 // descendente
                 while (j > 0 && array[j - 1] > aux) {
 
-                    System.out.print(amarillo + printArray(array) + reset + "  ");
-
-                    comparaciones++;
                     array[j] = array[j - 1];
+                    if (j==i) {
+                        System.out.print(amarillo + printArray(array) + reset + "  ");  
+                    }else{
+                        printSpecificElements(array,array[j],aux,j);
+                    }
+                    
+                    j--;
+                    comparaciones++;
+                    
                     System.out.println("a: " + j + "  " + "b : " + (j - 1)
                             + "  " + "a: [" + array[j] + "]  " + "b: [" + aux + "]" + "  " + "cambio: "
                             + " si ");
-                    j--;
                     cambios++;
                 }
 
@@ -91,5 +101,26 @@ public class InsertionSort {
         }
         mensaje += "]";
         return mensaje;
+    }
+    // array,array[j],aux,j
+    public void printSpecificElements(int[] array,int n1, int n2, int posj) {
+        boolean contAux= false;
+        
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(" ");
+            if (i==posj) {
+                System.out.print(n1+"  ");
+                contAux=true;
+                continue;
+            }
+            if (contAux) {
+                System.out.print(n2);
+                contAux=false;
+                
+            }
+            System.out.print("    ");
+            
+        }
+    
     }
 }

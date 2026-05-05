@@ -27,8 +27,14 @@ public class ShellSort {
 
                 if (asc) {
                     for (j = i; j >= gap && array[j - gap] > aux; j -= gap) {
-                        System.out.print(amarillo + printArray(array) + reset + "  ");
+                        
                         array[j] = array[j - gap];
+                        if (j==i) {
+                        System.out.print(amarillo + printArray(array) + reset + "  ");  
+                    }else{
+                        printSpecificElements(array,array[j],aux,j,j-gap);
+                    }
+
                         comparaciones++;
                         System.out.println("gap: " + gap + "   " + "a: " + j + "  " + "b : " + (j - gap)
                                 + "  " + "a: [" + array[j] + "]  " + "b: [" + aux + "]" + "  " + "cambio: "
@@ -75,5 +81,25 @@ public class ShellSort {
         mensaje += "]";
         return mensaje;
     }
+    public void printSpecificElements(int[] array,int n1, int n2, int posj,int gap) {
+        System.out.print("     ");
 
+        
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("  ");
+            if (i==posj) {
+                System.out.print(n1+"  ");
+                
+                continue;
+            }
+            if (i==gap) {
+                System.out.print(n2);
+                
+                
+            }
+            System.out.print("   ");
+            
+        }
+    
+    }
 }
